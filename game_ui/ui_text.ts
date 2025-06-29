@@ -101,11 +101,11 @@ export class UIText extends UIRect {
                                                          this.txt_alpha);
     }
 
-    get_img_id(): number {
+    get_text_id(): number {
         return this.txt_id;
     }
 
-    get_img_id_str(): string {
+    get_text_id_str(): string {
         return "GUID" + this.txt_id.toString();
     }
 }
