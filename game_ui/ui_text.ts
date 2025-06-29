@@ -1,12 +1,14 @@
 import { TextAlignType, UIType } from "./enums";
 import { UIRect } from "./ui_rect";
 import { UIRoot } from "./ui_root";
-import { number_to_pixels } from "./utils";
+import { channels_to_color, number_to_pixels } from "./utils";
 
 export class UIText extends UIRect {
     private txt_element: HTMLParagraphElement;
     private txt_id: number;
     private txt_align: TextAlignType;
+    private txt_color: Uint8Array;
+    private txt_alpha: number;
 
     constructor(in_root: HTMLElement, in_label: string = "") {
         super(in_root, in_label);
@@ -16,6 +18,8 @@ export class UIText extends UIRect {
         this.txt_id = UIRoot.get_next_id();
         this.txt_element.id = "GUID" + this.txt_id.toString();
         this.txt_align = TextAlignType.CENTER_TOP;
+        this.txt_color = new Uint8Array(3);
+        this.txt_alpha = 1.0;
 
         this.txt_element.style.userSelect = "none";
         this.txt_element.style.boxSizing = "border-box";
@@ -83,6 +87,18 @@ export class UIText extends UIRect {
             const height = this._calc_text_height();
             txt_style.top = "calc(100% - " + height.toString() + "px)";
         }
+    }
+
+    set_text_color(r: number, g: number, b: number, a: number = 1.0) {
+        this.txt_color[0] = r;
+        this.txt_color[1] = g;
+        this.txt_color[2] = b;
+        this.txt_alpha = a;
+
+        this.txt_element.style.color = channels_to_color(this.txt_color[0],
+                                                         this.txt_color[0],
+                                                         this.txt_color[0],
+                                                         this.txt_alpha);
     }
 
     get_img_id(): number {
