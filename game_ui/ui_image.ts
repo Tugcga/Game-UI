@@ -52,4 +52,12 @@ export class UIImage extends UIRect {
     get_img_id_str(): string {
         return "GUID" + this.img_id.toString();
     }
+
+    add_image_class(name: string) {
+        this.img_element.classList.add(name);
+    }
+
+    delete_image_class(name: string) {
+        this.img_element.classList.remove(name);
+    }
 }

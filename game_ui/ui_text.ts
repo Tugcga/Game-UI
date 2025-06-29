@@ -108,4 +108,12 @@ export class UIText extends UIRect {
     get_text_id_str(): string {
         return "GUID" + this.txt_id.toString();
     }
+
+    add_text_class(name: string) {
+        this.txt_element.classList.add(name);
+    }
+
+    delete_text_class(name: string) {
+        this.txt_element.classList.remove(name);
+    }
 }
