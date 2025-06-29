@@ -340,7 +340,7 @@ export class UIRectBase {
         }
     }
 
-    toggle_debug () {
+    toggle_debug() {
         this.set_debug(!this.is_debug);
     }
 
@@ -361,7 +361,6 @@ export class UIRectBase {
             this.unhide();
         }
     }
-
 }
 
 export class UIRect extends UIRectBase {
