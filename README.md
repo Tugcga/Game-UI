@@ -14,7 +14,7 @@ let root_element = document.getElementById("root");
 
 Create the UI
 
-```
+```typescript
 let ui_root = new UIRoot(root_element);
 ```
 
@@ -22,19 +22,19 @@ After that, the ```ui_root``` object will monitor the change in the size of ```r
 
 Next, we can add an UI-element to the UI. The main subject of each element is the rectangle
 
-```
+```typescript
 let rect_0 = ui_root.add_rect(ui_root, "orange rect");
 ```
 
 This will create an empty rectangle of zero size. The first parameter is a parent rectangle and the second is an internal label that will be displayed in the debug mode. Next, define anchors for the rectangle
 
-```
+```typescript
 rect_0.set_anchors(0.1, 0.9, 0.2, 0.8);
 ```
 
 Set some color to make the rectangle visible
 
-```
+```typescript
 rect_0.set_color(232, 195, 45, 0.75);
 ```
 
@@ -44,19 +44,19 @@ Now, the UI looks as follows
 
 To define the border of a rectangle, use the command
 
-```
+```typescript
 rect_0.set_border(4, 41, 48, 53);  // define thickness and RGB color components
 ```
 
 It's possible to add an offset to the boundaries of a rectangle. This will shift the sides from the top to the bottom (for top and bottom shifts) and from the left to the right (for left and right shifts)
 
-```
+```typescript
 rect_0.set_offsets(32, 32, 32, 32);
 ```
 
 If a rectangle is defined using anchors, it has a dynamic size that changes with respect to its parent size. However, it is also possible to create rectangles with fixed sizes
 
-```
+```typescript
 let rect_lt = ui_root.add_rect(rect_0, "square LT");
 rect_lt.set_color(128, 128, 192);
 rect_lt.set_fixed_size(64, 64, 0.0, 0.0, CenterType.LEFT_TOP, 12, 12);
@@ -98,7 +98,7 @@ rect_rb.set_fixed_size(64, 64, 1.0, 1.0, CenterType.RIGHT_BOTTOM, -12, -12);
 
 To activate the debug mode, use the command
 
-```
+```typescript
 ui_root.set_debug(true);
 ```
 
@@ -108,7 +108,7 @@ In debug mode, each rectangle is shown as a coloured rectangle with a black bord
 
 Add the image
 
-```
+```typescript
 let img = ui_root.add_image(ui_root, "assets\\img_01.png", "image");
 img.set_fixed_size(64, 64, 0.5, 0.5, CenterType.CENTER_MIDDLE, 0, 0);
 ```
@@ -117,7 +117,7 @@ img.set_fixed_size(64, 64, 0.5, 0.5, CenterType.CENTER_MIDDLE, 0, 0);
 
 Add the text
 
-```
+```typescript
 let txt = ui_root.add_text(ui_root, "text");
 txt.set_fixed_size(256, 128, 0.5, 0.5, CenterType.CENTER_MIDDLE, 0, 0);
 txt.set_text("Text at center");
@@ -125,19 +125,19 @@ txt.set_text("Text at center");
 
 It's possible to define the used font
 
-```
+```typescript
 txt.set_font("arial", 24, 900);
 ```
 
 Text color
 
-```
+```typescript
 txt.set_text_color(41, 48, 53);
 ```
 
 Text align
 
-```
+```typescript
 txt.set_align(TextAlignType.CENTER_MIDDLE);
 ```
 
@@ -145,59 +145,59 @@ txt.set_align(TextAlignType.CENTER_MIDDLE);
 
 Each UI-element has a unique ID. Its numerical value can be obtained by the command
 
-```
+```typescript
 const id = txt.get_id();
 ```
 
 As a string
 
-```
+```typescript
 const id_str = txt.get_id_str();
 ```
 
 As the string, the ID looks like ```GUID{number}```. These methods return the ID of the rectangular elements of each UI-elements. To obtain the image ID, use
 
-```
+```typescript
 img.get_img_id();
 img.get_img_id_str();
 ```
 
 And for text UI-element
 
-```
+```typescript
 txt.get_text_id();
 txt.get_text_id_str();
 ```
 
 The ID of each UI-element can be used to style it using CSS. You can also define a class for each element. For a base rectangle, use
 
-```
+```typescript
 txt.add_class("class");
 txt.delete_class("class");
 ```
 
 To modify the class of an actual image UI-element
 
-```
+```typescript
 img.add_image_class("class");
 img.delete_image_class("class");
 ```
 
 And for the actual text UI-element
 
-```
+```typescript
 txt.add_text_class("class");
 txt.delete_text_class("class");
 ```
 
 To hide the entire UI-element and all its sub-elements, use
 
-```
+```typescript
 txt.hide()
 ```
 
 To make it visible
 
-```
+```typescript
 txt.unhide()
 ```
