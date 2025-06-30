@@ -8,7 +8,7 @@ The library is still at an early stage of development and does not include many 
 
 Select any DOM element that will play the role of the UI root.
 
-```
+```typescript
 let root_element = document.getElementById("root");
 ```
 
